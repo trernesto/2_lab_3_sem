@@ -64,5 +64,20 @@ namespace _2_lab_3_sem
 
             panel1.Invalidate();
         }
+
+        private void doubleClick(object sender, MouseEventArgs e)
+        {
+            GraphObject go = new GraphObject();
+            list.Add(go);
+            try
+            {
+                go.X = e.X;
+                go.Y = e.Y;
+            } catch (ArgumentException ex)
+            {
+                MessageBox.Show("Invalid arguments");
+            }
+            panel1.Refresh();
+        }
     }
 }
