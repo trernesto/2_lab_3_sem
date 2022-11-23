@@ -79,5 +79,20 @@ namespace _2_lab_3_sem
             }
             panel1.Refresh();
         }
+
+        private void OnMouseDown(object sender, MouseEventArgs e)
+        {
+            GraphObject go = new GraphObject();
+            foreach (GraphObject obj in list)
+            {
+                obj.Selected = false;
+                if (obj.ContainsPoint(e.Location))
+                {
+                    go = obj;
+                }
+            }
+            go.Selected = true;
+            panel1.Invalidate();
+        }
     }
 }

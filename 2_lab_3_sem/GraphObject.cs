@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Runtime.Remoting.Messaging;
 using System.Windows.Forms;
 
 namespace _2_lab_3_sem
@@ -10,6 +11,7 @@ namespace _2_lab_3_sem
         private Color c; 
         private int x, y, w, h;
         private SolidBrush brush;
+        private bool selected = false;
         public GraphObject()
         {
             Color[] cols = { Color.Red, Color.Green, 
@@ -26,6 +28,23 @@ namespace _2_lab_3_sem
         internal void render(Graphics g)
         {
             g.FillEllipse(brush, x, y, w, h);
+            if (selected == false)
+            {
+                g.DrawRectangle(Pens.Black, x, y, w, h);
+            } else
+            {
+                g.DrawRectangle(Pens.Green, x, y, w, h);
+            }
+        }
+
+        public bool ContainsPoint(Point p)
+        {
+            if (p.X <= x + w && p.X >= x 
+                && p.Y <= y + h && p.Y >= y)
+            {
+                return true;
+            }
+            return false;
         }
 
         public int X { 
@@ -63,6 +82,12 @@ namespace _2_lab_3_sem
                 if (value < 0) { throw new ArgumentException("h<0!"); }
                 h = value;
             }
+        }
+
+        public bool Selected 
+        {
+            get => selected;
+            set { selected = value; }
         }
     }
 }

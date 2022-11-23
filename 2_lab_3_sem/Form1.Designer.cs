@@ -150,6 +150,7 @@
             this.panel1.TabIndex = 3;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.PaintPanel);
             this.panel1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.doubleClick);
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveMouse);
             // 
             // Form1
