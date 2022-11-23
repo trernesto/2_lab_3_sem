@@ -61,6 +61,7 @@ namespace _2_lab_3_sem
         {
             GraphObject go = new GraphObject();
             list.Add(go);
+
             panel1.Invalidate();
         }
     }
