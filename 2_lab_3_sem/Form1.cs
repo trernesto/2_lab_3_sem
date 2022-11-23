@@ -59,16 +59,41 @@ namespace _2_lab_3_sem
 
         private void AddFigure(object sender, EventArgs e)
         {
-            GraphObject go = new GraphObject();
-            list.Add(go);
-
+            createRandomFigure(sender, e);
             panel1.Invalidate();
+        }
+
+        private GraphObject createRandomFigure(object sender, EventArgs e)
+        {
+            GraphObject go;
+            Random r = new Random();
+            if (r.Next(2) == 0)
+            {
+                go = AddRectangleFigure(sender, e);
+            }
+            else
+            {
+                go = AddEllipseFigure(sender, e);
+            }
+            return go;
+        }
+        private GraphObject AddRectangleFigure(object sender, EventArgs e)
+        {
+            GraphObject go = new RectangleObject();
+            list.Add(go);
+            return go;
+        }
+
+        private GraphObject AddEllipseFigure(object sender, EventArgs e)
+        {
+            GraphObject go = new EllipseObject();
+            list.Add(go);
+            return go;
         }
 
         private void doubleClick(object sender, MouseEventArgs e)
         {
-            GraphObject go = new GraphObject();
-            list.Add(go);
+            GraphObject go = createRandomFigure(sender, e);
             try
             {
                 go.X = e.X;
@@ -82,7 +107,7 @@ namespace _2_lab_3_sem
 
         private void OnMouseDown(object sender, MouseEventArgs e)
         {
-            GraphObject go = new GraphObject();
+            GraphObject go = new RectangleObject();
             foreach (GraphObject obj in list)
             {
                 obj.Selected = false;

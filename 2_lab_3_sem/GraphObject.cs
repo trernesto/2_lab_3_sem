@@ -5,13 +5,13 @@ using System.Windows.Forms;
 
 namespace _2_lab_3_sem
 {
-    public class GraphObject
+    public abstract class GraphObject
     {
-        static Random r = new Random();
-        private Color c; 
-        private int x, y, w, h;
-        private SolidBrush brush;
-        private bool selected = false;
+        static protected Random r = new Random();
+        protected Color c; 
+        protected int x, y;
+        protected SolidBrush brush;
+        protected bool selected = false;
         public GraphObject()
         {
             Color[] cols = { Color.Red, Color.Green, 
@@ -19,33 +19,13 @@ namespace _2_lab_3_sem
             c = cols[r.Next(cols.Length)];
             x = r.Next(400);
             y = r.Next(300);
-            w = r.Next(100); ;
-            h = r.Next(100); ;
             brush = new SolidBrush(c);
 
         }
 
-        internal void render(Graphics g)
-        {
-            g.FillEllipse(brush, x, y, w, h);
-            if (selected == false)
-            {
-                g.DrawRectangle(Pens.Black, x, y, w, h);
-            } else
-            {
-                g.DrawRectangle(Pens.Green, x, y, w, h);
-            }
-        }
+        abstract public void render(Graphics g);
 
-        public bool ContainsPoint(Point p)
-        {
-            if (p.X <= x + w && p.X >= x 
-                && p.Y <= y + h && p.Y >= y)
-            {
-                return true;
-            }
-            return false;
-        }
+        abstract public bool ContainsPoint(Point p);
 
         public int X { 
             get => x; 
@@ -63,24 +43,6 @@ namespace _2_lab_3_sem
                 if (value < 0) { throw new ArgumentException("y<0!"); }
                 if (value > 300) { throw new ArgumentException("y>300!"); }
                 y = value;
-            }
-        }
-        public int W
-        {
-            get => w;
-            set
-            {
-                if (value < 0) { throw new ArgumentException("w<0!"); }
-                w = value;
-            }
-        }
-        public int H
-        {
-            get => h;
-            set
-            {
-                if (value < 0) { throw new ArgumentException("h<0!"); }
-                h = value;
             }
         }
 
