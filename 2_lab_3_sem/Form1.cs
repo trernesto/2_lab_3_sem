@@ -56,43 +56,35 @@ namespace _2_lab_3_sem
             }
 
         }
-
+        static IGraphicFactory rof = new RandomObjectFactory();
+        static IGraphicFactory ttf = new TwoTypeFactory();
         private void AddFigure(object sender, EventArgs e)
         {
-            createRandomFigure(sender, e);
+            GraphObject go = CreateRandomObject();
+            list.Add(go);
             panel1.Invalidate();
         }
         private static Random r = new Random();
-        private GraphObject createRandomFigure(object sender, EventArgs e)
+
+        public GraphObject CreateRandomObject()
         {
-            GraphObject go;
+            Random r = new Random();
             if (r.Next(2) == 0)
             {
-                go = AddRectangleFigure(sender, e);
+                GraphObject go = new RectangleObject();
+                return go;
             }
             else
             {
-                go = AddEllipseFigure(sender, e);
+                GraphObject go = new EllipseObject();
+                return go;
             }
-            return go;
-        }
-        private GraphObject AddRectangleFigure(object sender, EventArgs e)
-        {
-            GraphObject go = new RectangleObject();
-            list.Add(go);
-            return go;
-        }
-
-        private GraphObject AddEllipseFigure(object sender, EventArgs e)
-        {
-            GraphObject go = new EllipseObject();
-            list.Add(go);
-            return go;
         }
 
         private void doubleClick(object sender, MouseEventArgs e)
         {
-            GraphObject go = createRandomFigure(sender, e);
+            GraphObject go = CreateRandomObject();
+            list.Add(go);
             try
             {
                 go.X = e.X;
@@ -167,6 +159,20 @@ namespace _2_lab_3_sem
         {
             list = new List<GraphObject>();
             panel1.Refresh();
+        }
+
+        private void CreateWithROF(object sender, EventArgs e)
+        {
+            GraphObject go = rof.CreateGraphObject();
+            list.Add(go);
+            panel1.Invalidate();
+        }
+
+        private void CreateWithTTF(object sender, EventArgs e)
+        {
+            GraphObject go = ttf.CreateGraphObject();
+            list.Add(go);
+            panel1.Invalidate();
         }
     }
 }

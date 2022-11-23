@@ -42,6 +42,8 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.rofToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ttfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -69,7 +71,9 @@
             // 
             this.фигурыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.удалитьToolStripMenuItem,
-            this.переместитьToolStripMenuItem});
+            this.переместитьToolStripMenuItem,
+            this.rofToolStripMenuItem,
+            this.ttfToolStripMenuItem});
             this.фигурыToolStripMenuItem.Name = "фигурыToolStripMenuItem";
             this.фигурыToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.фигурыToolStripMenuItem.Text = "Фигуры";
@@ -173,6 +177,20 @@
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveMouse);
             // 
+            // rofToolStripMenuItem
+            // 
+            this.rofToolStripMenuItem.Name = "rofToolStripMenuItem";
+            this.rofToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.rofToolStripMenuItem.Text = "rof";
+            this.rofToolStripMenuItem.Click += new System.EventHandler(this.CreateWithROF);
+            // 
+            // ttfToolStripMenuItem
+            // 
+            this.ttfToolStripMenuItem.Name = "ttfToolStripMenuItem";
+            this.ttfToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ttfToolStripMenuItem.Text = "ttf";
+            this.ttfToolStripMenuItem.Click += new System.EventHandler(this.CreateWithTTF);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -213,6 +231,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem переместитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rofToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ttfToolStripMenuItem;
     }
 }
 
