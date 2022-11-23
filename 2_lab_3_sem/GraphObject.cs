@@ -26,5 +26,10 @@ namespace _2_lab_3_sem
         {
             g.FillEllipse(brush, x, y, w, h);
         }
+
+        public int X { get => x; set { x = value; } }
+        public int Y { get => y; set { y = value; } }
+        public int W { get => w; set { w = value; } }
+        public int H { get => h; set { h = value; } }
     }
 }
