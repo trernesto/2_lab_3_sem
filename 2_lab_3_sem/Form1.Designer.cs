@@ -34,6 +34,8 @@
             this.фигурыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.переместитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rofToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ttfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -42,8 +44,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.rofToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ttfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -81,16 +81,30 @@
             // удалитьToolStripMenuItem
             // 
             this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
-            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.удалитьToolStripMenuItem.Text = "Удалить";
             this.удалитьToolStripMenuItem.Click += new System.EventHandler(this.deleteFigureMenu);
             // 
             // переместитьToolStripMenuItem
             // 
             this.переместитьToolStripMenuItem.Name = "переместитьToolStripMenuItem";
-            this.переместитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.переместитьToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.переместитьToolStripMenuItem.Text = "Переместить";
             this.переместитьToolStripMenuItem.Click += new System.EventHandler(this.setNewCordsMenu);
+            // 
+            // rofToolStripMenuItem
+            // 
+            this.rofToolStripMenuItem.Name = "rofToolStripMenuItem";
+            this.rofToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.rofToolStripMenuItem.Text = "rof";
+            this.rofToolStripMenuItem.Click += new System.EventHandler(this.CreateWithROF);
+            // 
+            // ttfToolStripMenuItem
+            // 
+            this.ttfToolStripMenuItem.Name = "ttfToolStripMenuItem";
+            this.ttfToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.ttfToolStripMenuItem.Text = "ttf";
+            this.ttfToolStripMenuItem.Click += new System.EventHandler(this.CreateWithTTF);
             // 
             // toolStrip1
             // 
@@ -176,20 +190,6 @@
             this.panel1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.doubleClick);
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveMouse);
-            // 
-            // rofToolStripMenuItem
-            // 
-            this.rofToolStripMenuItem.Name = "rofToolStripMenuItem";
-            this.rofToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.rofToolStripMenuItem.Text = "rof";
-            this.rofToolStripMenuItem.Click += new System.EventHandler(this.CreateWithROF);
-            // 
-            // ttfToolStripMenuItem
-            // 
-            this.ttfToolStripMenuItem.Name = "ttfToolStripMenuItem";
-            this.ttfToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.ttfToolStripMenuItem.Text = "ttf";
-            this.ttfToolStripMenuItem.Click += new System.EventHandler(this.CreateWithTTF);
             // 
             // Form1
             // 

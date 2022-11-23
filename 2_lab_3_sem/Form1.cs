@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Channels;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -98,6 +99,19 @@ namespace _2_lab_3_sem
         GraphObject savedObject;
         private void OnMouseDown(object sender, MouseEventArgs e)
         {
+            if(e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                selectObject(sender, e);
+            }
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                moveObject(sender, e);
+            }
+
+        }
+
+        private void selectObject(object sender, MouseEventArgs e)
+        {
             savedObject = null;
             foreach (GraphObject obj in list)
             {
@@ -173,6 +187,34 @@ namespace _2_lab_3_sem
             GraphObject go = ttf.CreateGraphObject();
             list.Add(go);
             panel1.Invalidate();
+        }
+
+        private static int dx, dy, timerCounter = 0;
+        private void moveObject(object sender, MouseEventArgs e)
+        {
+            timerCounter = 0;
+            int mouseX = e.X;
+            int mouseY = e.Y;
+            int numberOfIterations = 5;
+            dx = (mouseX - savedObject.X) / numberOfIterations;
+            dy = (mouseY - savedObject.Y) / numberOfIterations;
+            Timer timer = new Timer();
+            timer.Interval = 1000;
+            timer.Enabled = true;
+            timer.Tick += new System.EventHandler(OnTimerEvent);
+            timer.Start();
+        }
+        private void OnTimerEvent(object sender, EventArgs e)
+        {
+            timerCounter++;
+            savedObject.X = savedObject.X + dx;
+            savedObject.Y = savedObject.Y + dy;
+            panel1.Refresh();
+            if (timerCounter == 5)
+            {
+                Timer timer = (Timer)sender;
+                timer.Stop();
+            }
         }
     }
 }
