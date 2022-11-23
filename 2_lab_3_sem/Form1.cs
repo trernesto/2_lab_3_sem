@@ -16,5 +16,52 @@ namespace _2_lab_3_sem
         {
             InitializeComponent();
         }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void exitProgram(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void MoveMouse(object sender, MouseEventArgs e)
+        {
+            toolStripStatusLabel1.Text = $"Mouse: {e.X}, {e.Y}";
+        }
+
+        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+        List<GraphObject> list = new List<GraphObject>();
+        private void PaintPanel(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            foreach(GraphObject obj in list) 
+            {
+                obj.render(g);
+            }
+
+        }
+
+        private void AddFigure(object sender, EventArgs e)
+        {
+            GraphObject go = new GraphObject();
+            list.Add(go);
+            panel1.Invalidate();
+        }
     }
 }
