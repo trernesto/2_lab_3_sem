@@ -9,11 +9,8 @@ namespace _2_lab_3_sem
 
         public EllipseObject() : base()
         {
-            //a = r.Next(200);
-            //b = r.Next(200);
-            a = 100; b = 100;
-            this.X = 100;
-            this.Y = 100;
+            a = r.Next(200);
+            b = r.Next(200);
         }
 
         public override bool ContainsPoint(Point p)

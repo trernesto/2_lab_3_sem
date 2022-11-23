@@ -62,11 +62,10 @@ namespace _2_lab_3_sem
             createRandomFigure(sender, e);
             panel1.Invalidate();
         }
-
+        private static Random r = new Random();
         private GraphObject createRandomFigure(object sender, EventArgs e)
         {
             GraphObject go;
-            Random r = new Random();
             if (r.Next(2) == 0)
             {
                 go = AddRectangleFigure(sender, e);
@@ -104,20 +103,70 @@ namespace _2_lab_3_sem
             }
             panel1.Refresh();
         }
-
+        GraphObject savedObject;
         private void OnMouseDown(object sender, MouseEventArgs e)
         {
-            GraphObject go = new RectangleObject();
+            savedObject = null;
             foreach (GraphObject obj in list)
             {
                 obj.Selected = false;
                 if (obj.ContainsPoint(e.Location))
                 {
-                    go = obj;
+                    savedObject = obj;
                 }
             }
-            go.Selected = true;
+            if (savedObject != null)
+            {
+                savedObject.Selected = true;
+            }
             panel1.Invalidate();
+        }
+
+        private void deleteFigure(object sender, KeyPressEventArgs e)
+        {   //q char
+            if (e.KeyChar == (char)113)
+            {
+                delete(savedObject);
+            }
+            //e char
+            if (e.KeyChar == (char)101)
+            {
+                setNewCords(savedObject);
+            }
+        }
+        private void delete(GraphObject gp)
+        {
+            if (gp != null)
+            {
+                list.Remove(gp);
+                panel1.Invalidate();
+            }
+        }
+
+        private void setNewCords(GraphObject gp)
+        {
+            if (gp != null)
+            {
+                gp.X = r.Next(400);
+                gp.Y = r.Next(300);
+                panel1.Invalidate();
+            }
+        }
+
+        private void deleteFigureMenu(object sender, EventArgs e)
+        {
+            delete(savedObject);
+        }
+
+        private void setNewCordsMenu(object sender, EventArgs e)
+        {
+            setNewCords(savedObject);
+        }
+
+        private void DeleteAll(object sender, EventArgs e)
+        {
+            list = new List<GraphObject>();
+            panel1.Refresh();
         }
     }
 }
